@@ -19,6 +19,7 @@ import com.libraryManagement.libraryManagement.exceptions.ApiErrorMessageKeyEnum
 import com.libraryManagement.libraryManagement.exceptions.BusinessLogicViolationException;
 import com.libraryManagement.libraryManagement.patron.entities.Patron;
 import com.libraryManagement.libraryManagement.patron.repositories.PatronRepository;
+import com.libraryManagement.libraryManagement.tasks.services.TaskService;
 
 import jakarta.transaction.Transactional;
 
@@ -37,6 +38,9 @@ public class BorrowingRecordServiceImpl implements BorrowingRecordService {
     
     @Autowired
     private PatronRepository patronRepository;
+    
+    @Autowired
+    private TaskService taskService;
 
 	@Override
 	public BorrowingRecordResModel borrowBook(Long bookId, Long patronId) {
@@ -85,7 +89,7 @@ public class BorrowingRecordServiceImpl implements BorrowingRecordService {
 	}
 	
 	@Transactional
-	@Scheduled(cron = "0 0 0 * * *")
+	@Scheduled(cron = "0 35 19 * * *")
 	public void scheduledTask() {
 		List<BorrowingRecord> borrowingRecords = borrowingRecordRepository.findAllByActualReturnDateIsNullAndLateReturnIsFalse();
 		LocalDateTime now = LocalDateTime.now();
@@ -96,6 +100,9 @@ public class BorrowingRecordServiceImpl implements BorrowingRecordService {
         .forEach(b -> b.setLateReturn(true));
 
 		borrowingRecordRepository.saveAll(borrowingRecords);
+		
+		String taskName = taskService.generateTaskName("Update Late Return Status");
+        taskService.saveTask(taskName);
 	}
 
 }

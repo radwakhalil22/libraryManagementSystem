@@ -3,19 +3,22 @@ package com.libraryManagement.libraryManagement.patron.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.libraryManagement.libraryManagement.auditing.entities.BaseEntity;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "patrons")
 @Data
-public class Patron implements Serializable {
+@EqualsAndHashCode(callSuper=false)
+public class Patron extends BaseEntity implements Serializable {
 
     /**
 	 * 
@@ -38,8 +41,8 @@ public class Patron implements Serializable {
 	@Column(name = "creation_date")
 	private Date creationDate;
     
-    @PrePersist
-    public void prePersist() {
-        this.creationDate = new Date();
-    }
+//    @PrePersist
+//    public void prePersist() {
+//        this.creationDate = new Date();
+//    }
 }

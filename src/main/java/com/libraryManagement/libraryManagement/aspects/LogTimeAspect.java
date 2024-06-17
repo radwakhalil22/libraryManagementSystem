@@ -22,14 +22,10 @@ public class LogTimeAspect {
 		
 	       StopWatch stopWatch = new StopWatch();
 	       stopWatch.start();
-	       StringBuilder sb = new StringBuilder("KPI:");
-			sb.append("[").append(joinPoint.getKind()).append("]\tfor: ").append(joinPoint.getSignature())
-					.append("\twithArgs: ").append("(").append(StringUtils.join(joinPoint.getArgs(), ",")).append(")");
-			log.info(sb.toString());
 	       Object returnValue = joinPoint.proceed();
 	       stopWatch.stop();
 	       StringBuilder logMessage = new StringBuilder();
-          logMessage.append("\n===== KPI LOGGING =====order 1")
+          logMessage.append("\n===== KPI LOGGING =====")
 	                 .append("\nKind          : ").append(joinPoint.getKind())
 	                 .append("\nSignature     : ").append(joinPoint.getSignature())
 	                 .append("\nArguments     : ").append(StringUtils.join(joinPoint.getArgs(), ", "))

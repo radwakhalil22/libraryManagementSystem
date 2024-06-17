@@ -3,6 +3,8 @@ package com.libraryManagement.libraryManagement.books.entities;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import com.libraryManagement.libraryManagement.auditing.entities.BaseEntity;
+
 //import com.libraryManagement.libraryManagement.auditing.Auditable;
 
 import jakarta.persistence.Column;
@@ -18,7 +20,7 @@ import lombok.EqualsAndHashCode;
 @Table(name = "books")
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class Books/* extends Auditable */implements Serializable {/**
+public class Books extends BaseEntity implements Serializable {/**
 	 * 
 	 */
 	private static final long serialVersionUID = -3335829666377057360L;

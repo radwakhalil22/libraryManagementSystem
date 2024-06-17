@@ -3,6 +3,7 @@ package com.libraryManagement.libraryManagement.borrowingRecord.entites;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import com.libraryManagement.libraryManagement.auditing.entities.BaseEntity;
 import com.libraryManagement.libraryManagement.books.entities.Books;
 import com.libraryManagement.libraryManagement.patron.entities.Patron;
 
@@ -17,11 +18,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "borrowing_records")
 @Data
-public class BorrowingRecord implements Serializable{
+@EqualsAndHashCode(callSuper=false)
+public class BorrowingRecord extends BaseEntity implements Serializable{
 	
 	 /**
 	 * 
