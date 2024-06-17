@@ -1,4 +1,4 @@
-package com.libraryManagement.libraryManagement.securityConfig;
+package com.libraryManagement.libraryManagement.auditing.config;
 
 import java.util.Optional;
 
@@ -7,7 +7,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class AuditorAwareImpl implements AuditorAware<String> {
+public class AuditorAwareImpl implements AuditorAware<String> { 
 
 	@Override
 	public Optional<String> getCurrentAuditor() {

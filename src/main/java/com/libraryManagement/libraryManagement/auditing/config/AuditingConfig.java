@@ -1,4 +1,4 @@
-package com.libraryManagement.libraryManagement.securityConfig;
+package com.libraryManagement.libraryManagement.auditing.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

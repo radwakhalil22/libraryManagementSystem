@@ -22,7 +22,7 @@ public class Patron extends BaseEntity implements Serializable {
 
     /**
 	 * 
-	 */
+	 */ 
 	private static final long serialVersionUID = -7340450282352863186L;
 
 	@Id
