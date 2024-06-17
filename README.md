@@ -7,6 +7,7 @@
 - Aspects (AOP): Implements cross-cutting concerns such as logging.
 - Caching: Enhances performance by storing frequently accessed data.
 - Logging: Provides detailed logs for debugging and monitoring.
+- Authentication: Secures endpoints using JWT (JSON Web Token).
 
 ## Running the Application
 To run the application locally, follow these steps:
